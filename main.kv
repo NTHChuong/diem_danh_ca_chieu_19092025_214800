@@ -1,0 +1,48 @@
+<MainScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Thông báo điểm danh"
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: dp(10)
+                spacing: dp(10)
+                MDCard:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text: root.k10
+                        halign: 'left'
+                MDCard:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text: root.k11
+                        halign: 'left'
+                MDRaisedButton:
+                    text: 'Copy K10'
+                    on_release: root.copy_to_clipboard(root.k10)
+                MDRaisedButton:
+                    text: 'Copy K11'
+                    on_release: root.copy_to_clipboard(root.k11)
+                MDRaisedButton:
+                    text: 'Share K10'
+                    on_release: root.share(root.k10)
+                MDRaisedButton:
+                    text: 'Share K11'
+                    on_release: root.share(root.k11)
+                MDLabel:
+                    text: 'Lịch sử:'
+                    bold: True
+                MDList:
+                    id: history_list
+                    size_hint_y: None
+                    height: self.minimum_height
+                    RecycleView:
+                        viewclass: 'OneLineListItem'
+                        RecycleBoxLayout:
+                            default_size: None, dp(48)
+                            default_size_hint: 1, None
+                            size_hint_y: None
+                            height: self.minimum_height
+                            orientation: 'vertical'
+                        data: [{'text': f"#{h[0]} - {h[1]}", 'on_release': lambda x=h[0]: root.show_history(x)} for h in root.history]
