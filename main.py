@@ -1,4 +1,3 @@
-```python
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.properties import StringProperty, ListProperty
@@ -124,4 +123,3 @@ class KhoiDiemDanhApp(MDApp):
 
 if __name__=='__main__':
     KhoiDiemDanhApp().run()
-```
